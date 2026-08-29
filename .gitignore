@@ -1,0 +1,11 @@
+/build/
+/build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+compile_commands.json
+.cache/
+*.o
+*.zni
+example.zni
+/Testing/

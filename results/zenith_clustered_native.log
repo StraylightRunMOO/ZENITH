@@ -1,0 +1,104 @@
+Ground-truth spectral projection: 63.7 ms
+Exact identity: 385.5 us/query, 2594 QPS
+Exact matern  : 377.3 us/query, 2651 QPS
+Exact sobolev : 370.3 us/query, 2701 QPS
+built/measured mih_m16_b32      M=16  bits=32 build=3.5 ms mem=0.85 MB
+built/measured mih_m32_b32      M=32  bits=32 build=3.2 ms mem=1.10 MB
+built/measured mih_m32_b64      M=32  bits=64 build=5.2 ms mem=1.64 MB
+built/measured hybrid_m32_b64   M=32  bits=64 build=5.6 ms mem=1.64 MB
+built/measured gray_m32_b32     M=32  bits=32 build=2.6 ms mem=0.57 MB
+built/measured gray_full        M=64  bits=64 build=3.9 ms mem=1.08 MB
+
+Benchmark summary (clustered, N=4096, D=64, Q=32, k=10, SIMD level=3)
+weight    config           ef      avg us   p95 us       QPS   recall   speedup
+identity  mih_m16_b32      10         1.5      1.7    659590    0.047    254.3x
+identity  mih_m16_b32      40         2.2      2.5    450508    0.125    173.7x
+identity  mih_m16_b32      4096      46.7     58.2     21436    0.238      8.3x
+matern    mih_m16_b32      10         1.0      1.0    982982    0.041    370.8x
+matern    mih_m16_b32      40         2.2      2.5    455205    0.072    171.7x
+matern    mih_m16_b32      4096      45.1     65.1     22158    0.163      8.4x
+sobolev   mih_m16_b32      10         0.9      1.0   1066524    0.031    394.9x
+sobolev   mih_m16_b32      40         2.2      2.4    452610    0.106    167.6x
+sobolev   mih_m16_b32      4096      44.1     49.2     22685    0.181      8.4x
+identity  mih_m32_b32      10         1.7      1.8    601922    0.047    232.1x
+identity  mih_m32_b32      40         2.4      2.6    416239    0.166    160.5x
+identity  mih_m32_b32      4096      53.3     62.0     18772    0.403      7.2x
+matern    mih_m32_b32      10         1.0      1.1    975461    0.041    368.0x
+matern    mih_m32_b32      40         2.4      2.6    420914    0.081    158.8x
+matern    mih_m32_b32      4096      47.8     65.2     20935    0.191      7.9x
+sobolev   mih_m32_b32      10         1.0      1.1    969462    0.031    359.0x
+sobolev   mih_m32_b32      40         2.4      2.6    419364    0.119    155.3x
+sobolev   mih_m32_b32      4096      48.4     56.4     20642    0.266      7.6x
+identity  mih_m32_b64      10         2.5      3.2    396462    0.050    152.8x
+identity  mih_m32_b64      40         3.2      4.0    314194    0.172    121.1x
+identity  mih_m32_b64      4096      53.9     64.5     18552    0.403      7.2x
+matern    mih_m32_b64      10         1.5      2.1    663529    0.044    250.3x
+matern    mih_m32_b64      40         2.7      2.9    367795    0.094    138.8x
+matern    mih_m32_b64      4096      46.5     54.0     21513    0.191      8.1x
+sobolev   mih_m32_b64      10         1.2      1.3    812203    0.056    300.7x
+sobolev   mih_m32_b64      40         2.8      2.9    356840    0.125    132.1x
+sobolev   mih_m32_b64      4096      49.5     61.5     20197    0.266      7.5x
+identity  hybrid_m32_b64   10         2.6      2.4    388364    0.050    149.7x
+identity  hybrid_m32_b64   40         3.4      4.5    291206    0.194    112.3x
+identity  hybrid_m32_b64   4096      54.4     64.3     18399    0.403      7.1x
+matern    hybrid_m32_b64   10         1.4      1.4    735024    0.044    277.3x
+matern    hybrid_m32_b64   40         2.8      3.1    358728    0.109    135.3x
+matern    hybrid_m32_b64   4096      47.3     62.6     21162    0.191      8.0x
+sobolev   hybrid_m32_b64   10         1.2      1.3    812575    0.056    300.9x
+sobolev   hybrid_m32_b64   40         2.8      3.0    358769    0.153    132.8x
+sobolev   hybrid_m32_b64   4096      50.3     61.7     19900    0.266      7.4x
+identity  gray_m32_b32     10         2.0      1.9    510123    0.062    196.7x
+identity  gray_m32_b32     40         2.7      2.8    365969    0.200    141.1x
+identity  gray_m32_b32     4096      51.6     62.9     19368    0.403      7.5x
+matern    gray_m32_b32     10         1.3      1.2    778646    0.044    293.7x
+matern    gray_m32_b32     40         2.4      2.6    418826    0.113    158.0x
+matern    gray_m32_b32     4096      45.6     53.1     21919    0.191      8.3x
+sobolev   gray_m32_b32     10         1.0      1.1    963043    0.047    356.6x
+sobolev   gray_m32_b32     40         2.4      2.6    415854    0.156    154.0x
+sobolev   gray_m32_b32     4096      49.2     56.2     20328    0.266      7.5x
+identity  gray_full        10         2.9     11.7    342877    0.094    132.2x
+identity  gray_full        40         3.0      4.3    330903    0.272    127.6x
+identity  gray_full        4096      89.2    102.9     11217    1.000      4.3x
+matern    gray_full        10         1.3      1.3    795664    0.081    300.2x
+matern    gray_full        40         2.9      2.8    343994    0.272    129.8x
+matern    gray_full        4096      88.2     98.8     11343    1.000      4.3x
+sobolev   gray_full        10         1.2      1.3    808530    0.094    299.4x
+sobolev   gray_full        40         2.6      2.8    384495    0.291    142.4x
+sobolev   gray_full        4096      88.0     94.8     11361    1.000      4.2x
+
+Pareto frontier by weight (higher recall, lower p95 latency):
+  identity:
+    mih_m16_b32      ef=20    recall=0.100 p95=1.6 us QPS=577857
+    mih_m16_b32      ef=40    recall=0.125 p95=2.5 us QPS=450508
+    mih_m32_b32      ef=20    recall=0.103 p95=1.8 us QPS=489334
+    mih_m32_b32      ef=40    recall=0.166 p95=2.6 us QPS=416239
+    mih_m32_b32      ef=80    recall=0.294 p95=3.8 us QPS=286418
+    gray_m32_b32     ef=20    recall=0.119 p95=2.4 us QPS=465631
+    gray_m32_b32     ef=40    recall=0.200 p95=2.8 us QPS=365969
+    gray_m32_b32     ef=80    recall=0.303 p95=4.0 us QPS=260393
+    gray_full        ef=80    recall=0.431 p95=4.4 us QPS=256571
+    gray_full        ef=160   recall=0.716 p95=6.4 us QPS=171252
+    gray_full        ef=4096  recall=1.000 p95=102.9 us QPS=11217
+  matern:
+    mih_m16_b32      ef=10    recall=0.041 p95=1.0 us QPS=982982
+    gray_m32_b32     ef=10    recall=0.044 p95=1.2 us QPS=778646
+    gray_m32_b32     ef=20    recall=0.094 p95=1.7 us QPS=638952
+    gray_full        ef=10    recall=0.081 p95=1.3 us QPS=795664
+    gray_full        ef=20    recall=0.178 p95=2.0 us QPS=449161
+    gray_full        ef=40    recall=0.272 p95=2.8 us QPS=343994
+    gray_full        ef=80    recall=0.447 p95=4.2 us QPS=261526
+    gray_full        ef=160   recall=0.728 p95=6.2 us QPS=173567
+    gray_full        ef=4096  recall=1.000 p95=98.8 us QPS=11343
+  sobolev:
+    mih_m16_b32      ef=10    recall=0.031 p95=1.0 us QPS=1066524
+    mih_m32_b64      ef=10    recall=0.056 p95=1.3 us QPS=812203
+    gray_m32_b32     ef=10    recall=0.047 p95=1.1 us QPS=963043
+    gray_m32_b32     ef=20    recall=0.109 p95=1.7 us QPS=631737
+    gray_full        ef=10    recall=0.094 p95=1.3 us QPS=808530
+    gray_full        ef=20    recall=0.184 p95=1.9 us QPS=567889
+    gray_full        ef=40    recall=0.291 p95=2.8 us QPS=384495
+    gray_full        ef=80    recall=0.475 p95=4.0 us QPS=266918
+    gray_full        ef=160   recall=0.728 p95=6.3 us QPS=174744
+    gray_full        ef=4096  recall=1.000 p95=94.8 us QPS=11361
+
+CSV written to /mnt/agents/output/zenith/results/zenith_clustered_native.csv

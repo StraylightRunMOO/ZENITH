@@ -1,0 +1,189 @@
+Zenith 1.0.0  SIMD=1 (NEON)  FFTW=on  OpenMP=on  threads=6
+Ground-truth spectral projection: 130.9 ms
+Exact identity: 455.7 us/query, 2194 QPS
+Exact matern  : 458.2 us/query, 2183 QPS
+Exact sobolev : 460.3 us/query, 2173 QPS
+built/measured mih_m16_b32      M=16  bits=32 build=2.8 ms mem=0.85 MB fftw=1
+built/measured mih_m32_b32      M=32  bits=32 build=2.2 ms mem=1.10 MB fftw=1
+built/measured mih_m32_b64      M=32  bits=64 build=4.1 ms mem=1.64 MB fftw=1
+built/measured hybrid_m32_b64   M=32  bits=64 build=3.0 ms mem=1.64 MB fftw=1
+built/measured gray_m32_b32     M=32  bits=32 build=1.6 ms mem=0.57 MB fftw=1
+built/measured gray_full        M=64  bits=64 build=2.0 ms mem=1.08 MB fftw=1
+built/measured hamming_m32_b64  M=32  bits=64 build=1.7 ms mem=0.58 MB fftw=1
+built/measured posterior_m32_b64 M=32  bits=64 build=1.7 ms mem=0.58 MB fftw=1
+built/measured hamming_full     M=64  bits=64 build=1.9 ms mem=1.08 MB fftw=1
+built/measured posterior_full   M=64  bits=64 build=1.9 ms mem=1.08 MB fftw=1
+built/measured lm2_ham_full     M=64  bits=64 build=3.8 ms mem=1.08 MB fftw=1
+built/measured lm2_post_full    M=64  bits=64 build=3.8 ms mem=1.08 MB fftw=1
+built/measured signmag_ham_full M=64  bits=64 build=6.9 ms mem=1.08 MB fftw=1
+built/measured signmag_post_full M=64  bits=64 build=7.1 ms mem=1.08 MB fftw=1
+
+Benchmark summary (rough, N=4096, D=64, Q=32, k=10, SIMD=1, FFTW=on, OpenMP=on, threads=6)
+weight    config           ef      avg us   p95 us       QPS  batch QPS   recall   speedup
+identity  mih_m16_b32      10        37.0     49.0     26993     127367    0.266     12.3x
+identity  mih_m16_b32      40        50.5     72.5     19802     101190    0.484      9.0x
+identity  mih_m16_b32      4096      24.3     25.8     41215      78110    0.622     18.8x
+matern    mih_m16_b32      10        37.8     50.9     26430     140701    0.222     12.1x
+matern    mih_m16_b32      40        49.8     72.1     20086     104587    0.344      9.2x
+matern    mih_m16_b32      4096      93.0     27.1     10758      73700    0.319      4.9x
+sobolev   mih_m16_b32      10        43.8     57.1     22846     139894    0.247     10.5x
+sobolev   mih_m16_b32      40        50.5     71.6     19803     104840    0.428      9.1x
+sobolev   mih_m16_b32      4096      24.5     25.7     40840      77655    0.516     18.8x
+identity  mih_m32_b32      10        38.9     52.0     25705     137565    0.266     11.7x
+identity  mih_m32_b32      40        50.9     73.5     19649     103441    0.534      9.0x
+identity  mih_m32_b32      4096      39.4     31.6     25374      56768    0.709     11.6x
+matern    mih_m32_b32      10        38.3     51.6     26081     140365    0.222     12.0x
+matern    mih_m32_b32      40        50.7     73.3     19722     103773    0.406      9.0x
+matern    mih_m32_b32      4096      30.0     31.6     33336      56703    0.484     15.3x
+sobolev   mih_m32_b32      10        38.1     50.7     26228     139679    0.247     12.1x
+sobolev   mih_m32_b32      40        48.9     70.1     20434     103827    0.494      9.4x
+sobolev   mih_m32_b32      4096      29.0     31.1     34462      56368    0.625     15.9x
+identity  mih_m32_b64      10        42.3     49.7     23644     119100    0.422     10.8x
+identity  mih_m32_b64      40        60.7     72.5     16470      88539    0.663      7.5x
+identity  mih_m32_b64      4096      29.4     31.0     34056      56732    0.709     15.5x
+matern    mih_m32_b64      10        43.2     51.2     23144     122785    0.403     10.6x
+matern    mih_m32_b64      40        58.8     68.7     17007      89075    0.509      7.8x
+matern    mih_m32_b64      4096      29.6     31.1     33740      56584    0.484     15.5x
+sobolev   mih_m32_b64      10        43.1     50.8     23223     122125    0.422     10.7x
+sobolev   mih_m32_b64      40        62.8     73.5     15934      89147    0.609      7.3x
+sobolev   mih_m32_b64      4096      28.9     30.4     34554      54949    0.625     15.9x
+identity  hybrid_m32_b64   10        45.0     53.1     22231     120506    0.422     10.1x
+identity  hybrid_m32_b64   40        44.7     51.6     22383     121208    0.650     10.2x
+identity  hybrid_m32_b64   4096      39.9     31.9     25052      56665    0.709     11.4x
+matern    hybrid_m32_b64   10        44.2     53.2     22639     122499    0.403     10.4x
+matern    hybrid_m32_b64   40        43.9     50.9     22803     121887    0.509     10.4x
+matern    hybrid_m32_b64   4096      30.4     32.0     32874      54937    0.484     15.1x
+sobolev   hybrid_m32_b64   10        43.0     51.1     23240     105381    0.422     10.7x
+sobolev   hybrid_m32_b64   40        47.6     52.9     21006     115790    0.603      9.7x
+sobolev   hybrid_m32_b64   4096      29.3     31.1     34074      57001    0.625     15.7x
+identity  gray_m32_b32     10         2.2      2.5    464455    2557545    0.241    211.7x
+identity  gray_m32_b32     40         3.0      3.4    329371    1795231    0.366    150.1x
+identity  gray_m32_b32     4096      28.8     30.4     34727      55504    0.709     15.8x
+matern    gray_m32_b32     10         1.8      2.0    549121    2801120    0.200    251.6x
+matern    gray_m32_b32     40         2.9      3.2    340353    1703487    0.297    155.9x
+matern    gray_m32_b32     4096      28.9     30.6     34652      57173    0.484     15.9x
+sobolev   gray_m32_b32     10         1.8      2.0    560528    2702703    0.209    258.0x
+sobolev   gray_m32_b32     40         2.9      3.1    347452    1785615    0.338    159.9x
+sobolev   gray_m32_b32     4096      29.0     30.8     34517      45272    0.625     15.9x
+identity  gray_full        10         2.4      2.8    412015    2331002    0.231    187.8x
+identity  gray_full        40         3.7      4.2    270186    1481481    0.375    123.1x
+identity  gray_full        4096      38.7     40.1     25821      37964    1.000     11.8x
+matern    gray_full        10         2.0      2.2    496263    2512366    0.263    227.4x
+matern    gray_full        40         3.5      4.0    283597    1485815    0.413    129.9x
+matern    gray_full        4096      37.3     39.7     26843      37330    1.000     12.3x
+sobolev   gray_full        10         1.9      2.1    513858    2570694    0.234    236.5x
+sobolev   gray_full        40         3.5      4.0    289004    1543210    0.381    133.0x
+sobolev   gray_full        4096      37.0     39.0     27055      37933    1.000     12.5x
+identity  hamming_m32_b64  10        27.4     34.3     36480     197270    0.416     16.6x
+identity  hamming_m32_b64  40        30.5     35.7     32742     163339    0.659     14.9x
+identity  hamming_m32_b64  4096      28.8     31.7     34717      57144    0.709     15.8x
+matern    hamming_m32_b64  10        29.4     34.4     34061     190361    0.403     15.6x
+matern    hamming_m32_b64  40        30.0     35.3     33336     181745    0.516     15.3x
+matern    hamming_m32_b64  4096      28.3     30.3     35374      56971    0.484     16.2x
+sobolev   hamming_m32_b64  10        27.3     32.5     36617     198443    0.419     16.9x
+sobolev   hamming_m32_b64  40        30.8     35.8     32449     181910    0.597     14.9x
+sobolev   hamming_m32_b64  4096      29.1     30.0     34376      56958    0.625     15.8x
+identity  posterior_m32_b64 10        53.3     56.4     18775      77205    0.488      8.6x
+identity  posterior_m32_b64 40        55.5     58.9     18011      76696    0.728      8.2x
+identity  posterior_m32_b64 4096      28.7     31.2     34804      52666    0.709     15.9x
+matern    posterior_m32_b64 10        57.7     56.0     17327      78632    0.481      7.9x
+matern    posterior_m32_b64 40        56.2     58.5     17809      76796    0.528      8.2x
+matern    posterior_m32_b64 4096      28.3     31.0     35277      56955    0.484     16.2x
+sobolev   posterior_m32_b64 10        56.0     55.5     17854      79055    0.497      8.2x
+sobolev   posterior_m32_b64 40        55.8     58.7     17937      77039    0.659      8.3x
+sobolev   posterior_m32_b64 4096      28.9     30.6     34607      13615    0.625     15.9x
+identity  hamming_full     10        31.4     33.9     31854     198918    0.416     14.5x
+identity  hamming_full     40        32.3     38.3     30917     179817    0.747     14.1x
+identity  hamming_full     4096      35.8     37.3     27972      37309    1.000     12.7x
+matern    hamming_full     10        26.8     33.1     37318     198602    0.403     17.1x
+matern    hamming_full     40        30.3     35.6     32998     179947    0.722     15.1x
+matern    hamming_full     4096      36.7     38.9     27230      37840    1.000     12.5x
+sobolev   hamming_full     10        26.8     32.6     37294     198247    0.419     17.2x
+sobolev   hamming_full     40        30.5     34.6     32743     181548    0.747     15.1x
+sobolev   hamming_full     4096      36.0     38.3     27781      33459    1.000     12.8x
+identity  posterior_full   10        54.5     56.8     18339      79217    0.488      8.4x
+identity  posterior_full   40        56.7     60.4     17644      76502    0.887      8.0x
+identity  posterior_full   4096      36.5     38.0     27402      37653    1.000     12.5x
+matern    posterior_full   10        52.6     55.5     19010      76896    0.469      8.7x
+matern    posterior_full   40        64.0     65.4     15625      76310    0.812      7.2x
+matern    posterior_full   4096      39.5     39.7     25324      37809    1.000     11.6x
+sobolev   posterior_full   10        53.8     55.5     18585      78899    0.516      8.6x
+sobolev   posterior_full   40        55.3     57.6     18095      76141    0.872      8.3x
+sobolev   posterior_full   4096      37.4     38.4     26721      37774    1.000     12.3x
+identity  lm2_ham_full     10        29.2     35.3     34224     191489    0.488     15.6x
+identity  lm2_ham_full     40        32.0     37.4     31293     176485    0.844     14.3x
+identity  lm2_ham_full     4096      37.9     38.8     26365      37494    1.000     12.0x
+matern    lm2_ham_full     10        28.9     34.3     34628     192005    0.375     15.9x
+matern    lm2_ham_full     40        38.7     37.3     25846     177929    0.697     11.8x
+matern    lm2_ham_full     4096      37.2     39.6     26874      37683    1.000     12.3x
+sobolev   lm2_ham_full     10        28.7     34.4     34827     192522    0.447     16.0x
+sobolev   lm2_ham_full     40        31.3     38.0     31960     177898    0.784     14.7x
+sobolev   lm2_ham_full     4096      37.4     39.0     26755      37730    1.000     12.3x
+identity  lm2_post_full    10       112.9    116.1      8856      46642    0.528      4.0x
+identity  lm2_post_full    40       115.5    118.1      8662      46887    0.912      3.9x
+identity  lm2_post_full    4096      37.2     39.9     26870      37491    1.000     12.2x
+matern    lm2_post_full    10       112.3    114.5      8903      47783    0.406      4.1x
+matern    lm2_post_full    40       118.1    118.1      8468      46920    0.738      3.9x
+matern    lm2_post_full    4096      39.3     38.7     25424      37686    1.000     11.6x
+sobolev   lm2_post_full    10       111.9    114.4      8933      47340    0.463      4.1x
+sobolev   lm2_post_full    40       114.8    117.9      8708      46688    0.875      4.0x
+sobolev   lm2_post_full    4096      37.0     39.2     27024      36789    1.000     12.4x
+identity  signmag_ham_full 10        40.1     48.9     24967     128794    0.622     11.4x
+identity  signmag_ham_full 40        40.2     50.0     24883     121976    0.975     11.3x
+identity  signmag_ham_full 4096      38.4     39.3     26067      37569    1.000     11.9x
+matern    signmag_ham_full 10        36.9     45.4     27123     129478    0.556     12.4x
+matern    signmag_ham_full 40        39.7     45.8     25201     122845    0.903     11.5x
+matern    signmag_ham_full 4096      36.9     39.6     27126      37874    1.000     12.4x
+sobolev   signmag_ham_full 10        37.1     44.7     26942     130954    0.606     12.4x
+sobolev   signmag_ham_full 40        39.4     47.5     25367     123559    0.962     11.7x
+sobolev   signmag_ham_full 4096      37.4     39.4     26708      37272    1.000     12.3x
+identity  signmag_post_full 10       242.8    244.7      4119      21959    0.728      1.9x
+identity  signmag_post_full 40       245.2    248.6      4078      21761    0.991      1.9x
+identity  signmag_post_full 4096      37.1     39.6     26931      37786    1.000     12.3x
+matern    signmag_post_full 10       241.9    244.4      4134      22068    0.691      1.9x
+matern    signmag_post_full 40       244.6    248.9      4089      21555    0.981      1.9x
+matern    signmag_post_full 4096      37.7     40.0     26557      34113    1.000     12.2x
+sobolev   signmag_post_full 10       241.4    243.9      4142      21798    0.706      1.9x
+sobolev   signmag_post_full 40       245.2    248.5      4078      21759    0.997      1.9x
+sobolev   signmag_post_full 4096      37.0     40.1     27018      37712    1.000     12.4x
+
+Pareto frontier by weight (higher recall, lower p95 latency):
+  identity:
+    mih_m16_b32      ef=4096  recall=0.622 p95=25.8 us QPS=41215
+    gray_m32_b32     ef=10    recall=0.241 p95=2.5 us QPS=464455
+    gray_m32_b32     ef=20    recall=0.331 p95=2.8 us QPS=403857
+    gray_m32_b32     ef=40    recall=0.366 p95=3.4 us QPS=329371
+    gray_m32_b32     ef=80    recall=0.425 p95=4.6 us QPS=242474
+    gray_m32_b32     ef=160   recall=0.491 p95=6.8 us QPS=160147
+    gray_m32_b32     ef=4096  recall=0.709 p95=30.4 us QPS=34727
+    gray_full        ef=40    recall=0.375 p95=4.2 us QPS=270186
+    gray_full        ef=80    recall=0.444 p95=6.2 us QPS=186665
+    gray_full        ef=160   recall=0.594 p95=9.9 us QPS=116099
+    hamming_full     ef=4096  recall=1.000 p95=37.3 us QPS=27972
+  matern:
+    gray_m32_b32     ef=10    recall=0.200 p95=2.0 us QPS=549121
+    gray_m32_b32     ef=20    recall=0.275 p95=2.6 us QPS=434765
+    gray_full        ef=10    recall=0.263 p95=2.2 us QPS=496263
+    gray_full        ef=20    recall=0.334 p95=2.8 us QPS=387738
+    gray_full        ef=40    recall=0.413 p95=4.0 us QPS=283597
+    gray_full        ef=80    recall=0.481 p95=5.8 us QPS=196958
+    gray_full        ef=160   recall=0.625 p95=8.9 us QPS=122680
+    hamming_full     ef=40    recall=0.722 p95=35.6 us QPS=32998
+    hamming_full     ef=80    recall=0.897 p95=38.4 us QPS=30043
+    lm2_post_full    ef=4096  recall=1.000 p95=38.7 us QPS=25424
+  sobolev:
+    gray_m32_b32     ef=10    recall=0.209 p95=2.0 us QPS=560528
+    gray_m32_b32     ef=20    recall=0.306 p95=2.5 us QPS=442074
+    gray_m32_b32     ef=40    recall=0.338 p95=3.1 us QPS=347452
+    gray_m32_b32     ef=80    recall=0.391 p95=5.2 us QPS=15186
+    gray_m32_b32     ef=160   recall=0.466 p95=7.1 us QPS=156758
+    gray_full        ef=10    recall=0.234 p95=2.1 us QPS=513858
+    gray_full        ef=40    recall=0.381 p95=4.0 us QPS=289004
+    gray_full        ef=80    recall=0.447 p95=5.8 us QPS=197817
+    gray_full        ef=160   recall=0.600 p95=8.7 us QPS=123103
+    hamming_m32_b64  ef=4096  recall=0.625 p95=30.0 us QPS=34376
+    hamming_full     ef=40    recall=0.747 p95=34.6 us QPS=32743
+    hamming_full     ef=4096  recall=1.000 p95=38.3 us QPS=27781
+    lm2_ham_full     ef=40    recall=0.784 p95=38.0 us QPS=31960
+
+CSV written to /home/damus/Projects/ZENITH/results/zenith_rough_o3_fftw_omp.csv
